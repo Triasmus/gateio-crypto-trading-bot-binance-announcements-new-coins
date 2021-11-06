@@ -173,8 +173,8 @@ def main():
 
         global supported_currencies
 
-        if announcement_coin not in order and announcement_coin not in sold_coins and announcement_coin not in old_coins:
-            logger.info(f'New annoucement detected: {announcement_coin}')
+        if announcement_coin not in order and announcement_coin not in sold_coins and announcement_coin not in old_coins and announcement_coin is not False:
+            logger.info(f'New announcement detected: {announcement_coin}')
 
             if supported_currencies is not False:
                 if announcement_coin in supported_currencies:
@@ -232,7 +232,6 @@ def main():
             else:
                 get_all_currencies()
         else:
-
             logger.info( 'No coins announced, or coin has already been bought/sold. Checking more frequently in case TP and SL need updating')
 
         time.sleep(3)
